@@ -24,7 +24,7 @@ export class BookmarkIconComponent extends LitElement {
 
   render() {
     return html`
-      <quran-material-icon icon="${this.bookmarked ? 'bookmark' : 'bookmark_border'}" @click="${() => this.onClick()}"></quran-material-icon>
+      <span class="bookmark-icon"><quran-material-icon icon="${this.bookmarked ? 'bookmark' : 'bookmark_border'}" @click="${() => this.onClick()}"></quran-material-icon></span>
     `;
   }
 

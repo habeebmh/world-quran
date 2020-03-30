@@ -34,7 +34,10 @@ export class BookmarksComponent extends LitElement {
         <quran-app-navigation bookmarks></quran-app-navigation>
     </div>
     <quran-body>
-    ${this.bookmarks ? '' : html`<h2>No bookmarks</h2>`}
+    ${this.bookmarks.length > 0 ? '' : html`
+    <h2>No bookmarks</h2>
+    <h3>To Bookmark a verse click the <quran-material-icon icon="bookmark_border"></quran-material-icon> icon.</h3>
+    `}
     ${this.bookmarks.map(([chapter, name, verse]) => html`
       <quran-translated-text
           arabictext="${verse.arabic}"
