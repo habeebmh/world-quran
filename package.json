@@ -50,6 +50,7 @@
   "author": "international-quran",
   "license": "MIT",
   "dependencies": {
+    "@polymer/paper-spinner": "^3.0.2",
     "@valle/valle-select": "^1.2.1",
     "js-cookie": "^3.0.0-rc.0",
     "lit-element": "^2.3.1",

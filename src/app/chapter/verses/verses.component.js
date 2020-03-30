@@ -1,3 +1,4 @@
+import '@polymer/paper-spinner/paper-spinner.js';
 import {LitElement, html, css} from 'lit-element';
 import style from './verses.component.scss';
 
@@ -25,6 +26,7 @@ export class VersesComponent extends LitElement {
 
   render() {
     return html`
+    ${this.verses.length === 0 ? html`<paper-spinner active></paper-spinner>` : ''}
     ${this.verses.map(verse => verse ? html`
     <quran-translated-text
       scrollToElement="${this.verse === verse.number}"
@@ -36,7 +38,6 @@ export class VersesComponent extends LitElement {
         <span class="bookmark"><quran-bookmark-icon chapter="${this.chapter}" verse="${verse.number}"></quran-bookmark-icon></span>
         <span class="number">${verse.number}</span>
       </div>` : ''}
-      ${verse.facts.ruku ? html`<sup slot="super">[رُكوع]</sup>` : ''}
       ${verse.facts.sajda ? html`<sup slot="super">[سُجود]</sup>` : ''}
     </quran-translated-text>` : '')}
     `;
