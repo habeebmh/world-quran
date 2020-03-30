@@ -10,36 +10,36 @@ export class _SettingsService {
     };
   }
 
-   set translation(translation) {
+  set translation(translation) {
     Cookies.remove(this._COOKIE_KEYS.translation);
     Cookies.set(this._COOKIE_KEYS.translation, JSON.stringify(translation), {expires: this._expiration, path: ''});
   }
 
-   get translation() {
+  get translation() {
     const cookie = Cookies.get(this._COOKIE_KEYS.translation);
     return cookie ? JSON.parse(cookie) : {
-      writer: "Mohammad Habib Shakir",
+      writer: "Ali Quli Qarai",
       language: "English",
-      name: "Shakir",
-      id: "en.shakir"
+      name: "Qarai",
+      id: "en.qarai"
     };
   }
 
-   set arabicFontSize(size) {
+  set arabicFontSize(size) {
     Cookies.remove(this._COOKIE_KEYS.arabicFontSize);
     Cookies.set(this._COOKIE_KEYS.arabicFontSize, size, {expires: this._expiration, path: ''});
   }
 
-   get arabicFontSize() {
+  get arabicFontSize() {
     return Cookies.get(this._COOKIE_KEYS.arabicFontSize) || '36';
   }
 
-   set translationFontSize(size) {
+  set translationFontSize(size) {
     Cookies.remove(this._COOKIE_KEYS.translationFontSize);
     Cookies.set(this._COOKIE_KEYS.translationFontSize, size, {expires: this._expiration, path: ''});
   }
 
-   get translationFontSize() {
+  get translationFontSize() {
     return Cookies.get(this._COOKIE_KEYS.translationFontSize) || '26';
   }
 }
