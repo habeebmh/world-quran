@@ -31,7 +31,7 @@ export class _SettingsService {
   }
 
    get arabicFontSize() {
-    return Cookies.get(this._COOKIE_KEYS.arabicFontSize) || '34';
+    return Cookies.get(this._COOKIE_KEYS.arabicFontSize) || '36';
   }
 
    set translationFontSize(size) {
