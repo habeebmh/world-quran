@@ -19,7 +19,7 @@ class _BookmarkService {
   }
 
   removeBookmark(chapter, verse) {
-    const bookmarks = this.bookmarks.filter(bookmark => bookmark !== {chapter, verse});
+    const bookmarks = this.bookmarks.filter(bookmark => bookmark.chapter !== chapter && bookmark.verse !== verse);
     Cookies.remove(this._cookieKey);
     Cookies.set(
       this._cookieKey,
