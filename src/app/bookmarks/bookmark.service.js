@@ -10,22 +10,12 @@ class _BookmarkService {
   addBookmark(chapter, verse) {
     const {bookmarks} = this;
     bookmarks.push({chapter, verse});
-    Cookies.remove(this._cookieKey);
-    Cookies.set(
-      this._cookieKey,
-      JSON.stringify(bookmarks),
-      {expires: this._expiration, path: ''}
-    );
+    this.bookmarks = bookmarks;
   }
 
   removeBookmark(chapter, verse) {
-    const bookmarks = this.bookmarks.filter(bookmark => bookmark.chapter !== chapter && bookmark.verse !== verse);
-    Cookies.remove(this._cookieKey);
-    Cookies.set(
-      this._cookieKey,
-      JSON.stringify(bookmarks),
-      {expires: this._expiration, path: ''}
-    );
+    console.log(this.bookmarks.filter(bookmark => bookmark.chapter !== chapter && bookmark.verse !== verse));
+    this.bookmarks = this.bookmarks.filter(bookmark => bookmark.chapter !== chapter && bookmark.verse !== verse);
   }
 
   isBookmarked(chapter, verse) {
@@ -36,6 +26,15 @@ class _BookmarkService {
   get bookmarks() {
     const cookie = Cookies.get(this._cookieKey);
     return cookie ? JSON.parse(cookie) : [];
+  }
+
+  set bookmarks(bookmarks) {
+    Cookies.remove(this._cookieKey);
+    Cookies.set(
+      this._cookieKey,
+      JSON.stringify(bookmarks),
+      {expires: this._expiration, path: ''}
+    );
   }
 
 }

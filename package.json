@@ -8,7 +8,7 @@
     "lint": "npm run lint:eslint && npm run lint:prettier",
     "lint:eslint": "eslint --ext .js,.html . --ignore-path .gitignore",
     "lint:prettier": "prettier \"**/*.js\" --check --ignore-path .gitignore",
-    "start": "rimraf dist && rollup --watch -c rollup.config.js & light-server -s dist -p 4205 --historyindex /index.html --no-reload"
+    "start": "rimraf dist && rollup --watch -c rollup.config.js & light-server -s dist -p 8000 --historyindex /index.html --no-reload"
   },
   "devDependencies": {
     "@open-wc/eslint-config": "^2.0.0",
