@@ -11,7 +11,7 @@ export class ChapterComponent extends LitElement {
     return {
       chapter: {type: Number},
       translation: {type: Object},
-      verse: {type: String},
+      verse: {type: Number},
       verses: {type: Array}
     };
   }
@@ -22,7 +22,7 @@ export class ChapterComponent extends LitElement {
     this.chapter = 0;
     this.chapterNameArabic = '';
     this.chapterNameTranslation = '';
-    this.verse = '';
+    this.verse = 0;
     this.verses = [];
   }
 
@@ -38,11 +38,29 @@ export class ChapterComponent extends LitElement {
       ${this.translation.language === 'English' ? html`<h3>${this.chapterNameTranslation}</h3>` : ''}
     </quran-page-header>
     <div class="navigation">
-        <quran-app-navigation></quran-app-navigation>
-        <quran-chapter-navigation chapter="${this.chapter}" translation="${JSON.stringify(this.translation)}"></quran-chapter-navigation>
+      <quran-app-navigation></quran-app-navigation>
+      <quran-chapter-navigation
+        chapter="${this.chapter}"
+        currentChapterName="${this.chapterNameArabic}"
+        translation="${JSON.stringify(this.translation)}"
+        verse="${this.verse}">
+      </quran-chapter-navigation>
     </div>
     <quran-body>
-      <quran-verses chapter="${this.chapter}" verses="${JSON.stringify(this.verses)}" translationlang="${this.translation.language}" verse="${this.verse}"></quran-verses>
+      ${this.verses.length === 0 ? html`<paper-spinner active></paper-spinner>` : ''}
+      ${this.verses.map(verse => verse ? html`
+      <quran-translated-text
+        scrollToElement="${this.verse === verse.number}"
+        arabictext="${verse.arabic}"
+        translationtext="${verse.translation}"
+        translationlang="${this.translationLang}">
+        ${verse.number > 0 ? html`
+        <div class="card-top" slot="top-info">
+          <span class="bookmark"><quran-bookmark-icon chapter="${this.chapter}" verse="${verse.number}"></quran-bookmark-icon></span>
+          <span class="number">${verse.number}</span>
+        </div>` : ''}
+        ${verse.facts.sajda ? html`<sup slot="super">[سُجود]</sup>` : ''}
+      </quran-translated-text>` : '')}
     </quran-body>
     `;
   }
@@ -75,7 +93,6 @@ export class ChapterComponent extends LitElement {
       verses,
       arabic: arabicTitle,
       translation: translatedTitle,
-
     };
   }
 

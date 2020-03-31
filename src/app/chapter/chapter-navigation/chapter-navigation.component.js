@@ -7,17 +7,21 @@ export class ChapterNavigationComponent extends LitElement {
   static get properties() {
     return {
       chapter: {type: Number},
-      translation: {type: Object},
+      currentChapterName: {type: String},
       leftChapterName: {type: String},
       rightChapterName: {type: String},
+      translation: {type: Object},
+      verse: {type: Number},
     };
   }
 
   constructor() {
     super();
-    this.translation = {};
+    this.currentChapterName = '';
     this.leftChapterName = '';
     this.rightChapterName = '';
+    this.translation = {};
+    this.verse = -1;
   }
 
   static get styles() {
@@ -30,6 +34,7 @@ export class ChapterNavigationComponent extends LitElement {
             <button @click="${() => ChapterNavigationComponent.navigate(this.leftChapterNumber)}" class="chapter-navigation-item left">
                 &larr; ${this.leftChapterNumber} ${this.leftChapterName}
             </button>
+            <button class="chapter-navigation-item">${this.currentChapterName} ${this.chapter}</button>
             <button @click="${() => ChapterNavigationComponent.navigate(this.rightChapterNumber)}" class="chapter-navigation-item right">
                 ${this.rightChapterNumber} ${this.rightChapterName} &rarr;
             </button>

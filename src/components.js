@@ -7,7 +7,6 @@ import {AppNavigationComponent} from "./app/shared/app-navigation/app-navigation
 import {ContentsComponent} from "./app/home/contents/contents.component.js";
 import {HomeComponent} from "./app/home/home/home.component.js";
 import {SettingsComponent} from "./app/settings/settings/settings.component.js";
-import {VersesComponent} from "./app/chapter/verses/verses.component.js";
 import {BodyComponent} from "./app/shared/body/body.component.js";
 import {TranslationSettingComponent} from "./app/settings/translation-setting/translation-setting.component.js";
 import {BookmarksComponent} from "./app/bookmarks/bookmarks/bookmarks.component.js";
@@ -28,4 +27,3 @@ customElements.define('quran-page-header', PageHeaderComponent);
 customElements.define('quran-settings', SettingsComponent);
 customElements.define('quran-translated-text', TranslatedTextComponent);
 customElements.define('quran-translation-setting', TranslationSettingComponent);
-customElements.define('quran-verses', VersesComponent);
