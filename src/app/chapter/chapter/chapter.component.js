@@ -1,3 +1,5 @@
+import '@polymer/paper-spinner/paper-spinner.js';
+
 import {LitElement, html, css} from 'lit-element';
 import style from './chapter.component.scss';
 import SettingsService from "../../settings/settings.service.js";
@@ -31,6 +33,7 @@ export class ChapterComponent extends LitElement {
   }
 
   render() {
+    console.log(this.verses.length);
     return html`
     <quran-page-header>
       <h4>Chapter #${this.chapter}</h4>
@@ -66,12 +69,10 @@ export class ChapterComponent extends LitElement {
   }
 
   async firstUpdated() {
-    this.translation = SettingsService.translation;
     const chapterInfo = await this._getChapter(this.translation.id, this.chapter);
     this.chapterNameArabic = chapterInfo.arabic;
     this.chapterNameTranslation = chapterInfo.translation;
     this.verses = await (chapterInfo.verses);
-
   }
 
   async _getChapter(translation, chapter) {
