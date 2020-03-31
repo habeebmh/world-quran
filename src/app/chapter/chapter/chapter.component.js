@@ -33,7 +33,6 @@ export class ChapterComponent extends LitElement {
   }
 
   render() {
-    console.log(this.verses.length);
     return html`
     <quran-page-header>
       <h4>Chapter #${this.chapter}</h4>
