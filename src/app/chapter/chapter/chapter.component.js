@@ -6,6 +6,7 @@ import SettingsService from "../../settings/settings.service.js";
 import XmlService from "../../shared/services/xml.service.js";
 import {Sura} from "../../shared/data/quran.data.js";
 import QuranService from "../../shared/services/quran.service.js";
+import {ARABIC_TEXT} from "../../shared/constants/constants.js";
 
 
 export class ChapterComponent extends LitElement {
@@ -55,15 +56,24 @@ export class ChapterComponent extends LitElement {
         scrollToElement="${this.verse === verse.number}"
         arabictext="${verse.arabic}"
         translationtext="${verse.translation}"
-        translationlang="${this.translationLang}">
+        translationlang="${this.translation.language}">
         ${verse.number > 0 ? html`
         <div class="card-top" slot="top-info">
           <span class="bookmark"><quran-bookmark-icon chapter="${this.chapter}" verse="${verse.number}"></quran-bookmark-icon></span>
           <span class="number">${verse.number}</span>
         </div>` : ''}
-        ${verse.facts.sajda ? html`<sup slot="super">[سُجود]</sup>` : ''}
+        <div style="display: inline" slot="super">
+          ${verse.facts.sajda && verse.facts.sajda === 'recommended' ? html`<img class="symbol" src="assets/sajda.png" alt="[سُجود]">` : ''}
+          ${verse.facts.sajda && verse.facts.sajda === 'obligatory' ? html`
+          <img class="text-symbol" src="assets/wajib.png" alt="واجب‎">
+          <img class="symbol" src="assets/sajda-transparent.png" alt="سُجود">` : ''}
+          ${verse.facts.juz ? html`<img class="text-symbol" src="assets/juz.png" alt="juz">` :''}
+          ${verse.facts.hizb ? html`<img class="symbol" src="assets/hizb.svg" alt="hizb">` :''}
+          ${verse.facts.ruku ? html`<img class="symbol" src="assets/ruku.png" alt="ruku">` :''}
+        </div>
       </quran-translated-text>` : '')}
     </quran-body>
+
     `;
   }
 
@@ -77,7 +87,7 @@ export class ChapterComponent extends LitElement {
   async _getChapter(translation, chapter) {
     const queryTranslation = translation && translation !== 'none';
 
-    const arabicXml = await XmlService.readXML('quran-uthmani');
+    const arabicXml = await XmlService.readXML(ARABIC_TEXT);
     const translationXml = queryTranslation ? await XmlService.readXML(translation) : null;
 
     const arabicChapter = arabicXml.querySelector(`sura[index="${chapter}"]`);

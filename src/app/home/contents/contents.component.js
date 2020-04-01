@@ -31,6 +31,9 @@ export class ContentsComponent extends LitElement {
           arabictext="${chapter.arabic}"
           translationtext="${chapter.translation}"
           translationlang="english">
+        <div slot="top-info">
+          <span class="number">${chapter.number}</span>
+        </div>
       </quran-translated-text>`
     )}
     `;

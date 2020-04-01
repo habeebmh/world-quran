@@ -39,7 +39,7 @@ export class TranslatedTextComponent extends LitElement {
         <div>
           <span class="arabic font-size-${this.arabicFontSize}px">
             <p class="info">عربى</p>
-            ${this.arabicText} <slot name="super" class="super"></slot>
+            ${this.arabicText} <slot name="super"></slot>
           </span>
           ${this.translationText ? html`
           <hr>
@@ -47,9 +47,6 @@ export class TranslatedTextComponent extends LitElement {
             <p class="info">${this.translationLang.toLowerCase()}</p>
             ${this.translationText}
           </span>` : ''}
-        </div>
-        <div class="facts">
-            <slot name="facts" class="info"></slot>
         </div>
       </div>
     `;
