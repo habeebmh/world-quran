@@ -62,14 +62,13 @@ export class ChapterComponent extends LitElement {
           <span class="bookmark"><quran-bookmark-icon chapter="${this.chapter}" verse="${verse.number}"></quran-bookmark-icon></span>
           <span class="number">${verse.number}</span>
         </div>` : ''}
-        <div style="display: inline" slot="super">
+        <div class="symbol-container" slot="super">
           ${verse.facts.sajda && verse.facts.sajda === 'recommended' ? html`<img class="symbol" src="assets/sajda.png" alt="[سُجود]">` : ''}
           ${verse.facts.sajda && verse.facts.sajda === 'obligatory' ? html`
           <img class="text-symbol" src="assets/wajib.png" alt="واجب‎">
           <img class="symbol" src="assets/sajda-transparent.png" alt="سُجود">` : ''}
-          ${verse.facts.juz ? html`<img class="text-symbol" src="assets/juz.png" alt="juz">` :''}
-          ${verse.facts.hizb ? html`<img class="symbol" src="assets/hizb.svg" alt="hizb">` :''}
-          ${verse.facts.ruku ? html`<img class="symbol" src="assets/ruku.png" alt="ruku">` :''}
+          ${verse.facts.juz ? html`<img class="text-symbol" src="assets/juz.png" alt="juz">` : html`${verse.facts.hizb ? html`<img class="symbol" src="assets/hizb.svg" alt="hizb">` : ''}`}
+          ${verse.facts.ruku ? html`<img class="symbol" src="assets/ruku.png" alt="ruku">` : ''}
         </div>
       </quran-translated-text>` : '')}
     </quran-body>
