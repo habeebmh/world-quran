@@ -54,7 +54,7 @@ export class TranslatedTextComponent extends LitElement {
 
   updated() {
     if (this.scrollToElement === 'true') {
-      setTimeout(() => { window.scrollTo(0, this.offsetTop - 100); }, 0);
+      setTimeout(() => window.scrollTo(0, this.offsetTop - 100), 0);
     }
   }
 }
