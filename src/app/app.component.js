@@ -1,3 +1,8 @@
+import './bookmarks/bookmarks/bookmarks.component.js';
+import './chapter/chapter/chapter.component.js';
+import './home/home/home.component.js';
+import './settings/settings/settings.component.js';
+
 import {LitElement, html, css} from 'lit-element';
 import style from './app.component.scss';
 
@@ -31,3 +36,4 @@ export class AppComponent extends LitElement {
   firstUpdated() {
   }
 }
+customElements.define('quran-app', AppComponent);

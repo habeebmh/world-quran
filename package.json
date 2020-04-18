@@ -1,7 +1,7 @@
 {
   "scripts": {
     "build": "rimraf dist && rollup -c rollup.config.js",
-    "deploy": "npm run build && firebase deploy",
+    "deploy": "git push && npm run build && firebase deploy",
     "format": "npm run format:eslint && npm run format:prettier",
     "format:eslint": "eslint --ext .js,.html . --fix --ignore-path .gitignore",
     "format:prettier": "prettier \"**/*.js\" --write --ignore-path .gitignore",

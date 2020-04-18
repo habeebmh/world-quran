@@ -1,3 +1,9 @@
+import '@polymer/paper-spinner/paper-spinner.js';
+import '../../shared/material-icon/material-icon.component.js';
+import '../../shared/translated-text/translated-text.component.js'
+import '../../shared/app-navigation/app-navigation.component.js';
+import '../../shared/page-header/page-header.component.js';
+
 import {LitElement, html, css} from 'lit-element';
 import style from './bookmarks.component.scss';
 import SettingsService from "../../settings/settings.service.js";
@@ -103,3 +109,4 @@ export class BookmarksComponent extends LitElement {
     Router.navigateTo(`/chapter/${chapter}/${verse}`)
   }
 }
+customElements.define('quran-bookmarks', BookmarksComponent);

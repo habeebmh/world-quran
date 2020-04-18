@@ -1,3 +1,5 @@
+import '../../shared/material-icon/material-icon.component.js'
+
 import {css, html, LitElement} from "lit-element";
 import style from "./bookmark-icon.component.scss";
 import BookmarkService from "../bookmark.service.js";
@@ -42,3 +44,4 @@ export class BookmarkIconComponent extends LitElement {
     }
   }
 }
+customElements.define('quran-bookmark-icon', BookmarkIconComponent);

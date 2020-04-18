@@ -1,3 +1,8 @@
+import '../translation-setting/translation-setting.component.js';
+import '../../shared/page-header/page-header.component.js';
+import '../../shared/app-navigation/app-navigation.component.js';
+import '../../shared/body/body.component.js';
+
 import {css, html, LitElement} from 'lit-element';
 import style from './settings.component.scss';
 
@@ -29,8 +34,5 @@ export class SettingsComponent extends LitElement {
     `;
   }
 
-  async firstUpdated() {
-
-  }
-
 }
+customElements.define('quran-settings', SettingsComponent);

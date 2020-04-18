@@ -1,7 +1,11 @@
+import '../contents/contents.component.js';
+import '../../shared/page-header/page-header.component.js';
+import '../../shared/app-navigation/app-navigation.component.js';
+import '../../bookmarks/bookmarks/bookmarks.component.js';
+
 import {LitElement, html, css} from 'lit-element';
 import style from './home.component.scss';
 import SettingsService from "../../settings/settings.service.js";
-
 
 export class HomeComponent extends LitElement {
   static get properties() {
@@ -35,3 +39,5 @@ export class HomeComponent extends LitElement {
     `;
   }
 }
+
+customElements.define('quran-home', HomeComponent);

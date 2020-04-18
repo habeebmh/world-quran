@@ -22,3 +22,5 @@ export class BodyComponent extends LitElement {
     `;
   }
 }
+
+customElements.define('quran-body', BodyComponent);

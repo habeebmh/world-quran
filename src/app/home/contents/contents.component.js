@@ -1,3 +1,6 @@
+import '@polymer/paper-spinner/paper-spinner.js'
+import '../../shared/translated-text/translated-text.component.js';
+
 import {LitElement, html, css} from 'lit-element';
 import style from './contents.component.scss';
 import Router from "../../router.js";
@@ -24,6 +27,7 @@ export class ContentsComponent extends LitElement {
 
   render() {
     return html`
+    ${this.chapters.length === 0 ? html`<paper-spinner></paper-spinner>` : ''}
     ${this.chapters.map(chapter => html`
       <quran-translated-text
           class="link"
@@ -58,3 +62,4 @@ export class ContentsComponent extends LitElement {
     }));
   }
 }
+customElements.define('quran-contents', ContentsComponent);

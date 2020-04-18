@@ -58,3 +58,4 @@ export class TranslatedTextComponent extends LitElement {
     }
   }
 }
+customElements.define('quran-translated-text', TranslatedTextComponent);

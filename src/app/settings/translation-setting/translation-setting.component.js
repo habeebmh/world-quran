@@ -95,6 +95,5 @@ export class TranslationSettingComponent extends LitElement {
       id: translationTag.getAttribute('id')
     };
   }
-
-
 }
+customElements.define('quran-translation-setting', TranslationSettingComponent);

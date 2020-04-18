@@ -28,3 +28,5 @@ export class MaterialIconComponent extends LitElement {
   }
 
 }
+
+customElements.define('quran-material-icon', MaterialIconComponent);

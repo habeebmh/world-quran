@@ -17,3 +17,5 @@ export class PageHeaderComponent extends LitElement {
     `;
   }
 }
+
+customElements.define('quran-page-header', PageHeaderComponent);

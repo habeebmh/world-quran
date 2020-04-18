@@ -73,3 +73,5 @@ export class ChapterNavigationComponent extends LitElement {
   }
 
 }
+
+customElements.define('quran-chapter-navigation', ChapterNavigationComponent);

@@ -1,4 +1,9 @@
 import '@polymer/paper-spinner/paper-spinner.js';
+import '../chapter-navigation/chapter-navigation.component.js';
+import '../../shared/page-header/page-header.component.js';
+import '../../shared/app-navigation/app-navigation.component.js';
+import '../../shared/body/body.component.js';
+import '../../shared/translated-text/translated-text.component.js'
 
 import {LitElement, html, css} from 'lit-element';
 import style from './chapter.component.scss';
@@ -130,4 +135,10 @@ export class ChapterComponent extends LitElement {
     }
     return verses
   }
+
+  _toArabicNumber(numeral) {
+    return `&#x0${660 + numeral};`;
+  }
 }
+
+customElements.define('quran-chapter', ChapterComponent);

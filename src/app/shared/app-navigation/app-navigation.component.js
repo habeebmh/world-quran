@@ -1,3 +1,5 @@
+import '../material-icon/material-icon.component.js'
+
 import {LitElement, html, css} from 'lit-element';
 import style from './app-navigation.component.scss';
 import Router from "../../router.js";
@@ -32,3 +34,5 @@ export class AppNavigationComponent extends LitElement {
     `;
   }
 }
+
+customElements.define('quran-app-navigation', AppNavigationComponent);
