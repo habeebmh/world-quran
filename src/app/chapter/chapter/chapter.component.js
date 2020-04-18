@@ -1,9 +1,9 @@
 import '@polymer/paper-spinner/paper-spinner.js';
 import '../chapter-navigation/chapter-navigation.component.js';
+import '../verse/verse.component.js';
 import '../../shared/page-header/page-header.component.js';
 import '../../shared/app-navigation/app-navigation.component.js';
 import '../../shared/body/body.component.js';
-import '../../shared/translated-text/translated-text.component.js'
 
 import {LitElement, html, css} from 'lit-element';
 import style from './chapter.component.scss';
@@ -57,24 +57,7 @@ export class ChapterComponent extends LitElement {
     <quran-body>
       ${this.verses.length === 0 ? html`<paper-spinner active></paper-spinner>` : ''}
       ${this.verses.map(verse => verse ? html`
-      <quran-translated-text
-        scrollToElement="${this.verse === verse.number}"
-        arabictext="${verse.arabic}"
-        translationtext="${verse.translation}"
-        translationlang="${this.translation.language}">
-        ${verse.number > 0 ? html`
-        <div class="card-top" slot="top-info">
-          <span class="bookmark"><quran-bookmark-icon chapter="${this.chapter}" verse="${verse.number}"></quran-bookmark-icon></span>
-          <span class="number">${verse.number}</span>
-        </div>` : ''}
-        <div class="symbol-container" slot="super">
-          ${verse.facts.sajda && verse.facts.sajda === 'recommended' ? html`<img class="symbol" src="assets/sajda.png" alt="[سُجود]">` : ''}
-          ${verse.facts.sajda && verse.facts.sajda === 'obligatory' ? html`
-          <img class="text-symbol" src="assets/wajib.png" alt="واجب‎">
-          <img class="symbol" src="assets/sajda-transparent.png" alt="سُجود">` : ''}
-          ${verse.facts.juz ? html`<img class="text-symbol" src="assets/juz.png" alt="juz">` : html`${verse.facts.hizb ? html`<img class="symbol" src="assets/hizb.svg" alt="hizb">` : ''}`}
-          ${verse.facts.ruku ? html`<img class="symbol" src="assets/ruku.png" alt="ruku">` : ''}
-        </div>
+      <quran-verse verse="${JSON.stringify(verse)}" translation="${JSON.stringify(this.translation)}" scrollToVerse="${this.verse === verse.number}"></quran-verse>
       </quran-translated-text>` : '')}
     </quran-body>
 
@@ -134,10 +117,6 @@ export class ChapterComponent extends LitElement {
       };
     }
     return verses
-  }
-
-  _toArabicNumber(numeral) {
-    return `&#x0${660 + numeral};`;
   }
 }
 
