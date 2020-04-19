@@ -1,5 +1,6 @@
-import '../verse-symbol-tooltip/verse-symbol-tooltip.component.js'
-import '../../shared/translated-text/translated-text.component.js'
+import '../verse-symbol-tooltip/verse-symbol-tooltip.component.js';
+import '../../bookmarks/bookmark-icon/bookmark-icon.component.js';
+import '../../shared/translated-text/translated-text.component.js';
 
 import {LitElement, html, css} from 'lit-element';
 import style from './verse.component.scss';
@@ -36,7 +37,8 @@ export class VerseComponent extends LitElement {
         <div class="card-top" slot="top-info">
           <span class="bookmark"><quran-bookmark-icon chapter="${this.chapter}" verse="${this.verse.number}"></quran-bookmark-icon></span>
           <span class="number">${this.verse.number}</span>
-        </div>` : ''}
+        </div>
+        ` : ''}
         <div class="symbol-container" slot="super">
           ${this.verse.facts.sajda ? html`
           <div>
