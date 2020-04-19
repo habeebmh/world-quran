@@ -56,9 +56,8 @@ export class BookmarksComponent extends LitElement {
             chapter="${chapter}"
             verse="${JSON.stringify(verse)}"
             translation="${JSON.stringify(this.translation)}">
-            <div slot="top-info">
-              <h2>${name}</h2>
-              <h4><span class="link" @click="${() => this.goToChapter(chapter, verse.number)}">${chapter}:${verse.number}</span></h4>
+            <div slot="more-top-info">
+              <h2><span class="link" @click="${() => this.goToChapter(chapter, verse.number)}">${name} ${chapter}:${verse.number}</span></h2>
             </div>
           </quran-verse>
         `)}`

@@ -39,6 +39,7 @@ export class VerseComponent extends LitElement {
         <div class="card-top" slot="top-info">
           <span class="bookmark"><quran-bookmark-icon chapter="${this.chapter}" verse="${this.verse.number}"></quran-bookmark-icon></span>
           <span class="number">${this.verse.number}</span>
+          <span style="margin-bottom: 10px;"><slot name="more-top-info"></slot></span>
         </div>
         ` : ''}
         <div class="symbol-container" slot="super">
@@ -53,7 +54,6 @@ export class VerseComponent extends LitElement {
                 <h2>Sujud (سُجود)</h2>
                 <p>Indicates a Sujud which is ${this.verse.facts.sajda}.</p>
               </div>
-              <div slot="top-info"><slot name="top-info"></slot></div>
             </quran-verse-symbol-tooltip>
           </div>
           ` : ''}

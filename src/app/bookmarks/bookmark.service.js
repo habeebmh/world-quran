@@ -14,7 +14,6 @@ class _BookmarkService {
   }
 
   removeBookmark(chapter, verse) {
-    console.log(this.bookmarks.filter(bookmark => bookmark.chapter !== chapter && bookmark.verse !== verse));
     this.bookmarks = this.bookmarks.filter(bookmark => bookmark.chapter !== chapter && bookmark.verse !== verse);
   }
 

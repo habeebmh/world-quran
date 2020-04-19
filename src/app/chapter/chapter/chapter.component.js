@@ -65,7 +65,6 @@ export class ChapterComponent extends LitElement {
       </quran-verse>
       </quran-translated-text>` : '')}
     </quran-body>
-
     `;
   }
 
