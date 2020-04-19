@@ -9,6 +9,7 @@ import style from './verse.component.scss';
 export class VerseComponent extends LitElement {
   static get properties() {
     return {
+      chapter: {type: Number},
       scrollToVerse: {type: String},
       translation: {type: Object},
       verse: {type: Object},
@@ -17,6 +18,7 @@ export class VerseComponent extends LitElement {
 
   constructor() {
     super();
+    this.chapter = 0;
     this.scrollToVerse = false;
     this.translation = {};
     this.verse = {};
@@ -51,6 +53,7 @@ export class VerseComponent extends LitElement {
                 <h2>Sujud (سُجود)</h2>
                 <p>Indicates a Sujud which is ${this.verse.facts.sajda}.</p>
               </div>
+              <div slot="top-info"><slot name="top-info"></slot></div>
             </quran-verse-symbol-tooltip>
           </div>
           ` : ''}

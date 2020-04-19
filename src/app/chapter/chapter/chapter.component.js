@@ -57,7 +57,12 @@ export class ChapterComponent extends LitElement {
     <quran-body>
       ${this.verses.length === 0 ? html`<paper-spinner active></paper-spinner>` : ''}
       ${this.verses.map(verse => verse ? html`
-      <quran-verse verse="${JSON.stringify(verse)}" translation="${JSON.stringify(this.translation)}" scrollToVerse="${this.verse === verse.number}"></quran-verse>
+      <quran-verse
+        chapter="${this.chapter}"
+        verse="${JSON.stringify(verse)}"
+        translation="${JSON.stringify(this.translation)}"
+        scrollToVerse="${this.verse === verse.number}">
+      </quran-verse>
       </quran-translated-text>` : '')}
     </quran-body>
 

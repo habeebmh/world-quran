@@ -1,6 +1,6 @@
 import '@polymer/paper-spinner/paper-spinner.js';
+import '../../chapter/verse/verse.component.js';
 import '../../shared/material-icon/material-icon.component.js';
-import '../../shared/translated-text/translated-text.component.js'
 import '../../shared/app-navigation/app-navigation.component.js';
 import '../../shared/page-header/page-header.component.js';
 
@@ -27,7 +27,7 @@ export class BookmarksComponent extends LitElement {
     super();
     this.bookmarks = [];
     this.loading = false;
-    this.translation = {};
+    this.translation = SettingsService.translation;
   }
 
   static get styles() {
@@ -52,15 +52,15 @@ export class BookmarksComponent extends LitElement {
         <h3>To Bookmark a verse click the <quran-material-icon icon="bookmark_border"></quran-material-icon> icon.</h3>`
         : html`
         ${this.bookmarks.map(([chapter, name, verse]) => html`
-          <quran-translated-text
-              arabictext="${verse.arabic}"
-              translationtext="${verse.translation}"
-              translationlang="${this.translation.language}">
-            <div slot="super">
-              ${verse.facts ? html`${verse.facts.sajda ? html`<sup>[سُجود]</sup>` : ''}` : ''}
+          <quran-verse
+            chapter="${chapter}"
+            verse="${JSON.stringify(verse)}"
+            translation="${JSON.stringify(this.translation)}">
+            <div slot="top-info">
+              <h2>${name}</h2>
+              <h4><span class="link" @click="${() => this.goToChapter(chapter, verse.number)}">${chapter}:${verse.number}</span></h4>
             </div>
-            <div slot="top-info"><h2>${name}</h2><h4><span class="link" @click="${() => this.goToChapter(chapter, verse.number)}">${chapter}:${verse.number}</span></h4></div>
-          </quran-translated-text>
+          </quran-verse>
         `)}`
       }`
     }
@@ -69,7 +69,6 @@ export class BookmarksComponent extends LitElement {
   }
 
   async firstUpdated() {
-    this.translation = SettingsService.translation;
     this.bookmarks = await this.getBookmarkedVerses();
   }
 
@@ -109,4 +108,5 @@ export class BookmarksComponent extends LitElement {
     Router.navigateTo(`/chapter/${chapter}/${verse}`)
   }
 }
+
 customElements.define('quran-bookmarks', BookmarksComponent);
